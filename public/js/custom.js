@@ -25,7 +25,7 @@ render_chart_bp = function(container_id, title, unit_name, Yaxis_title, data) {
     data_low = [];
     data_high = [];
     var i;
-    for (i = 0; i < cars.length; i++) {
+    for (i = 0; i < data.length; i++) {
         data_low.add({ "y": data[i]["y2"], "x": data[i]["x"] });
         data_high.add({ "y": data[i]["y1"], "x": data[i]["x"] });
     }
