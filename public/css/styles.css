@@ -5,9 +5,9 @@
           }
 
 .shdw-light{
-  -webkit-box-shadow: 6px 10px 6px -5px #777 !important;
-      -moz-box-shadow: 6px 10px 6px -5px #777 !important;
-          box-shadow: 6px 10px 6px -5px #777 !important;
+  -webkit-box-shadow: 4px 8px 12px -5px #777 !important;
+      -moz-box-shadow: 4px 8px 12px -5px #777 !important;
+          box-shadow: 4px 8px 12px -5px #777 !important;
 }
 
 #login-page{

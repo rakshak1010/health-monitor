@@ -1,4 +1,29 @@
 <%- include('partials/header') %>
 
 <h1 class="jumbotron mt-5">Dashboard</h1>
+<div class="container px-0">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center">
+            <h2> <i class="fas fa-heartbeat"></i> ECG</h2>
+        </div>
+        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center">
+            <h2><i class="fas fa-temperature-high"></i> Temperature</h2>
+        </div>
+        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center">
+            <h2>
+                <image src="images/svg/high.svg" width="50 rem" height="50 rem"></image> ECG
+            </h2>
+        </div>
+        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center">
+            <h2>
+                <image src="images/bp.jpeg" width="50 rem" height="50 rem"></image> Blood Pressure
+            </h2>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var val = '<%- JSON.stringify(health) %>';
+</script>
 <%- include('partials/footer') %>
