@@ -1,4 +1,4 @@
-render_chart = function (container_id, title, chart_type, unit_name, Yaxis_title, data, attribute) {
+render_chart = function(container_id, title, chart_type, unit_name, Yaxis_title, data, attribute) {
     var dummy = [{
         x: new Date("July 1, 2020 11:13:00"),
         y: 100
@@ -57,10 +57,11 @@ render_chart = function (container_id, title, chart_type, unit_name, Yaxis_title
     }, {
         x: new Date("July 19, 2020 11:13:00"),
         y: 99,
-    }
-    ];
+    }];
 
     var chart = new CanvasJS.Chart(container_id, {
+        animationEnabled: true,
+        zoomEnabled: true,
         title: {
             text: title
         },
@@ -77,13 +78,13 @@ render_chart = function (container_id, title, chart_type, unit_name, Yaxis_title
             markerSize: 5,
             color: "rgba(54,158,173,.7)",
             dataPoints: dummy
-            // dataPoints: data[attribute]
+                // dataPoints: data[attribute]
         }]
     });
     chart.render();
 }
 
-render_chart_bp = function (container_id, title, unit_name, Yaxis_title, data, attribute) {
+render_chart_bp = function(container_id, title, unit_name, Yaxis_title, data, attribute) {
     data_low = [];
     data_high = [];
     var i;
