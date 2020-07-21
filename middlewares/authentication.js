@@ -9,7 +9,7 @@ module.exports = {
     },
     checkLoginNoError: (req, res, next) => {
         if (req.isAuthenticated()) {
-            res.redirect("/graph");
+            res.redirect("/dashboard");
         } else {
             next();
         }

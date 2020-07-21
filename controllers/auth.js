@@ -28,7 +28,7 @@ module.exports = {
 			} else {
 				passport.authenticate("local")(req, res, function () {
 					req.flash("success", "Welcome " + req.body.username)
-					res.redirect("/graph");
+					res.redirect("/dashboard");
 				});
 			}
 		});

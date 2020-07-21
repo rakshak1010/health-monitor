@@ -47,7 +47,10 @@ app.use(function (req, res, next) {
 });
 
 var authRouter = require('./routes/auth');
+var dashboardRouter = require('./routes/dashboard');
+
 app.use('/', authRouter);
+app.use(dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

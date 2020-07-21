@@ -8,14 +8,14 @@ const auth = require('../controllers/auth');
 /* GET home page. */
 router.get('/', authentication.checkLoginNoError, auth.showHome);
 router.post('/', passport.authenticate("local", {
-    successRedirect: "/graph",
+    successRedirect: "/dashboard",
     failureRedirect: "/",
     failureFlash: true
 }), auth.loginUser);
 
 router.get('/login', authentication.checkLoginNoError, auth.showHome);
 router.post('/login', passport.authenticate("local", {
-    successRedirect: "/graph",
+    successRedirect: "/dashboard",
     failureRedirect: "/",
     failureFlash: true
 }), auth.loginUser);
