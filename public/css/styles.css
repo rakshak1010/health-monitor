@@ -1,0 +1,21 @@
+.shdw{
+  -webkit-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
+  -moz-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
+  box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
+          }
+
+.shdw-light{
+  -webkit-box-shadow: 6px 10px 6px -5px #777 !important;
+      -moz-box-shadow: 6px 10px 6px -5px #777 !important;
+          box-shadow: 6px 10px 6px -5px #777 !important;
+}
+
+#login-page{
+  background-image: url('../images/company.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-white{
+  background-color: white;
+}
