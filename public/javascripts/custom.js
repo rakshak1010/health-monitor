@@ -1,4 +1,4 @@
-render_chart = function(container_id, title, chart_type, unit_name, Yaxis_title, data, attribute) {
+render_chart = function (container_id, title, chart_type, unit_name, Yaxis_title, data, attribute) {
     var dummy = [{
         x: new Date("July 1, 2020 11:13:00"),
         y: 100
@@ -78,13 +78,13 @@ render_chart = function(container_id, title, chart_type, unit_name, Yaxis_title,
             markerSize: 5,
             color: "rgba(54,158,173,.7)",
             dataPoints: dummy
-                // dataPoints: data[attribute]
+            // dataPoints: data[attribute]
         }]
     });
     chart.render();
 }
 
-render_chart_bp = function(container_id, title, unit_name, Yaxis_title, data, attribute) {
+render_chart_bp = function (container_id, title, unit_name, Yaxis_title, data, attribute) {
     data = [{
         x: new Date("July 1, 2020 11:13:00"),
         y1: 120,
@@ -181,7 +181,7 @@ render_chart_bp = function(container_id, title, unit_name, Yaxis_title, data, at
             suffix: unit_name
         },
         data: [{
-            toolTipContent: "{y} " + unit_name.toString() + "\n{x}",
+            toolTipContent: "{y} " + unit_name.toString(),
             type: "line",
             showInLegend: true,
             legendText: "Systolic Pressure ",
