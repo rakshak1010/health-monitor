@@ -1,21 +1,46 @@
-.shdw{
-  -webkit-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
-  -moz-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
-  box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75) !important;
-          }
-
-.shdw-light{
-  -webkit-box-shadow: 4px 8px 8px -5px #777 !important;
-      -moz-box-shadow: 4px 8px 8px -5px #777 !important;
-          box-shadow: 4px 8px 8px -5px #777 !important;
+html {
+  height: 100vh;
 }
 
-#login-page{
-  background-image: url('../images/company.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+.shdw {
+  -webkit-box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.75) !important;
+  -moz-box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.75) !important;
+}
+
+.shdw-med {
+  -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.75) !important;
+  -moz-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.75) !important;
+}
+.shdw-light {
+  -webkit-box-shadow: 6px 10px 6px -5px #777 !important;
+  -moz-box-shadow: 6px 10px 6px -5px #777 !important;
+  box-shadow: 6px 10px 6px -5px #777 !important;
+}
+
+.zoom-effect:hover {
+  transform: scale(1.1);
+}
+
+.btn-rounded {
+  border-radius: 30px !important;
 }
 
 .bg-white{
   background-color: white;
+}
+
+.text-black{
+  color: black;
+}
+
+.gradient {
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
