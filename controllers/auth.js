@@ -20,7 +20,15 @@ module.exports = {
 			req.flash("error", "The passwords do not match. Please try again.");
 			res.redirect('/register');
 		}
-		User.register({ username: req.body.username }, req.body.password, (err, user) => {
+		var user = {
+			username: req.body.username,
+			email: req.body.email,
+			gender: req.body.gender,
+			age: req.body.age,
+			weight: req.body.weight,
+			height: req.body.height
+		}
+		User.register(user, req.body.password, (err, user) => {
 			if (err) {
 				console.log(err);
 				req.flash("error", "Username already exists. Please Log In.");
