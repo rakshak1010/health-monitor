@@ -10,5 +10,4 @@ module.exports = {
             res.render('dashboard', { health: health });
         });
     }
-
 };

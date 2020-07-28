@@ -13,52 +13,33 @@
             </div>
             <div class="col-12">
                 <div class="container-fluid">
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <span>Name </span>
-                        <span></span><br />
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <span>Age </span>
-                        <span></span><br />
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <span>Sex </span>
-                        <span></span><br />
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <span>Email </span>
-                        <span></span><br />
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <div class="container">
-                            <div class="row">
-                                <span>Height </span>
-                                <span></span><br />
-                            </div>
-                            <div class="row">
-                                <button>Update</button>
-
-                            </div>
+                    <p><span class="font-weight-bold">Name:</span> <span
+                            class="text-uppercase"><%=currentuser.username%></span></p>
+                    <p><span class="font-weight-bold">Email:</span> <%=currentuser.email%></p>
+                    <p><span class="font-weight-bold">Age:</span> <%=currentuser.age%></p>
+                    <p><span class="font-weight-bold">Gender:</span> <%=currentuser.gender%></p>
+                    <p><span class="font-weight-bold">Height:</span>
+                        <%=currentuser.height%>
+                    <form method="POST" action="/update?field=height">
+                        <div class="md-form mt-0 d-none">
+                            <input type="number" step=".01" class="form-control" id="height" required name="height"
+                                placeholder="Height in cm *">
                         </div>
-
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-
-                        <div class="container">
-                            <div class="row">
-                                <span>Weight </span>
-                                <span></span><br />
-                            </div>
-                            <div class="row">
-                                <button>Update</button>
-
-                            </div>
+                        <button type="submit" class="btn btn-primary btn-sm btn-height">Update:</button>
+                    </form>
+                    </p>
+                    <p><span class="font-weight-bold">Weight:</span>
+                        <%=currentuser.weight%>
+                    <form method="POST" action="/update?field=weight">
+                        <div class="md-form mt-0 d-none">
+                            <input type="number" step=".01" class="form-control" id="weight" required name="weight"
+                                placeholder="Weight in Kgs *">
                         </div>
-                    </div>
-                    <div class="row" style="margin-top: 1.75rem;">
-                        <span>BMI </span>
-                        <span></span><br />
-                    </div>
+                        <button type="submit" class="btn btn-primary btn-sm btn-weight">Update</button>
+                    </form>
+
+                    </p>
+                    <p><span class="font-weight-bold">BMI:</span> </p>
                 </div>
             </div>
         </div>
@@ -67,10 +48,10 @@
                 <div class="col-lg-4" style="padding: 0.5rem;">
                     <h1>Last results</h1>
 
-                    <div style="background-color: rgba(0,0,255,0.1); padding: 2rem;">
+                    <div class="p-1" style="background-color: rgba(0,0,255,0.1);">
                         <div class="container-fluid">
-                            <div class="row" style="text-align: center;">
-                                <div class="col-3" style="text-align: left;">
+                            <div class="row text-center">
+                                <div class="col-3 font-weight-bold text-left">
                                     BP
                                 </div>
                                 <div class="col-3">
@@ -83,9 +64,9 @@
                                     HIGH
                                 </div>
                             </div>
-                            <div class="row" style="text-align: center;">
-                                <div class="col-3" style="text-align: left;">
-                                    BP
+                            <div class="row text-center">
+                                <div class="col-3 font-weight-bold text-left">
+                                    ECG
                                 </div>
                                 <div class="col-3">
                                     100
@@ -97,9 +78,9 @@
                                     HIGH
                                 </div>
                             </div>
-                            <div class="row" style="text-align: center;">
-                                <div class="col-3" style="text-align: left;">
-                                    BP
+                            <div class="row text-center">
+                                <div class="col-3 font-weight-bold text-left">
+                                    Temperature
                                 </div>
                                 <div class="col-3">
                                     100
@@ -111,9 +92,9 @@
                                     HIGH
                                 </div>
                             </div>
-                            <div class="row" style="text-align: center;">
-                                <div class="col-3" style="text-align: left;">
-                                    BP
+                            <div class="row text-center">
+                                <div class="col-3 font-weight-bold text-left">
+                                    SP02
                                 </div>
                                 <div class="col-3">
                                     100
@@ -125,9 +106,9 @@
                                     HIGH
                                 </div>
                             </div>
-                            <div class="row" style="text-align: center;">
-                                <div class="col-3" style="text-align: left;">
-                                    BP
+                            <div class="row text-center">
+                                <div class="col-3 font-weight-bold text-left">
+                                    Heart Rate
                                 </div>
                                 <div class="col-3">
                                     100
@@ -148,10 +129,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-9 col-sm-12">
                     <div id="graph" class="my-5"></div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-12">
                     <div class="row justify-content-center" id="social-icons-row" style="width: 90%;">
                         <div class="row">
                             <div class="mt-3 col-lg-12 col-12 text-center">

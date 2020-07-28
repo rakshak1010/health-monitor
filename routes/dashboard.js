@@ -7,6 +7,6 @@ const user = require('../controllers/dashboard');
 
 /* GET users listing. */
 
-router.get('/dashboard', user.showDashboard);
+router.get('/dashboard', authentication.checkLoginWithError, user.showDashboard);
 
 module.exports = router;
