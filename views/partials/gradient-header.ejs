@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Monitor</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+</head>
+
+<body class="gradient text-white">
+
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark gradient fixed-top">
+        <a class="navbar-brand" href="/">
+            <strong>Health Monitor</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+            <ul class="navbar-nav ml-auto">
+                <% if(!currentuser){ %>
+                <!-- <li class="nav-item active pr-2">
+          <a class="nav-link" href="/login">
+            Login
+            <span class="sr-only">(current)</span>
+          </a>
+        </li> -->
+                <li class="nav-item active">
+                    <a class="nav-link" data-toggle="modal" data-target="#sideModalTR">
+                        <i class="fas fa-info"></i>
+                        Info
+                    </a>
+                </li>
+                <% } else{ %>
+                <li class="nav-item pr-4 active">
+                    <a class="nav-link text-uppercase" id="navbarDropdownMenuLink-4" data-toggle="modal"
+                        data-target="#fullHeightModalLeft">
+                        <i class="fas fa-user"></i> <%=currentuser.username%> </a>
+                    <!-- <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4"> -->
+                    <!-- <a class="dropdown-item" href="#">My account</a>
+            <a class="dropdown-item" href="#">Other Users</a> -->
+                    <!-- <a class="dropdown-item" href="/logout">Log out</a> -->
+                    <!-- </div> -->
+                </li>
+                <li class="nav-item active pr-2">
+                    <a class="nav-link" data-toggle="modal" data-target="#sideModalTR">
+                        <i class="fas fa-info"></i>
+                        Info
+                    </a>
+                </li>
+                <%}%>
+      </ul>
+    </div>
+  </nav>
+  <!--/.Navbar -->
+
+
+  <!-- Side Modal Top Right -->
+
+<!-- To change the direction of the modal animation change .right class -->
+<div class="modal fade right" id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+
+<!-- Add class .modal-side and then add class .modal-top-right (or other classes from list above) to set a position to the modal -->
+<div class="modal-dialog modal-side modal-top-right" role="document">
+
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title w-100" id="myModalLabel">About</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Write about here.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Side Modal Top Right -->
+
+
+<div class="modal fade left text-black" id="fullHeightModalLeft" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <!-- Add class .modal-full-height and then add class .modal-left (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-full-height modal-left" role="document">
+
+    <% if(currentuser){ %>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="myModalLabel"><span
+                                class="text-uppercase"><%=currentuser.username%></span>'s
+                            Profile</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-12 pb-2">
+                                <% if(currentuser.gender === "male"){ %>
+                                <img src="./images/male_icon.jpg" height="100%" width="100%">
+                                <% } else { %>
+                                <img src="./images/female_icon.jpg" height="100%" width="100%">
+                                <% } %>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <div class="container-fluid">
+                                <p><span class="font-weight-bold">Name:</span> <span
+                                        class="text-uppercase"><%=currentuser.username%></span>
+                                </p>
+                                <p><span class="font-weight-bold">Email:</span> <%=currentuser.email%></p>
+                                <p><span class="font-weight-bold">Age:</span> <%=currentuser.age%> years</p>
+                                <p><span class="font-weight-bold">Gender:</span> <span
+                                        class="text-uppercase"><%=currentuser.gender%></span>
+                                </p>
+                                <p><span class="font-weight-bold">BMI:</span>
+                                    <%= ((currentuser.weight/(currentuser.height*currentuser.height))*10000).toFixed(2) %>
+                                </p>
+                                <p><span class="font-weight-bold">Height:</span>
+                                    <%=currentuser.height%> cm
+                                <form method="POST" action="/update?field=height">
+                                    <div class="md-form mt-0 d-none inp-height">
+                                        <input type="number" step=".01" class="form-control" id="height" required
+                                            name="height" placeholder="Height in cm *">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm btn-height">Update</button>
+                                </form>
+                                </p>
+                                <p><span class="font-weight-bold">Weight:</span>
+                                    <%=currentuser.weight%> kg
+                                <form method="POST" action="/update?field=weight">
+                                    <div class="md-form mt-0 d-none inp-weight">
+                                        <input type="number" step=".01" class="form-control" id="weight" required
+                                            name="weight" placeholder="Weight in Kgs *">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm btn-weight">Update</button>
+                                </form>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        </div>
+        <!-- Full Height Modal left -->
