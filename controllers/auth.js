@@ -15,7 +15,6 @@ module.exports = {
 	createUser: (req, res) => {
 		var password = req.body.password;
 		var confirmationPassword = req.body.confirmPassword;
-		console.log(password, confirmationPassword);
 		if (password !== confirmationPassword) {
 			req.flash("error", "The passwords do not match. Please try again.");
 			res.redirect('/register');
