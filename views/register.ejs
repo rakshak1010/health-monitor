@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
-<div class="container-fluid">
-	<div class="row" style="margin-top:120px;">
+<div class="container-fluid mt-5">
+	<div class="row py-5">
 		<div class="col-sm-12 col-md-7 col-lg-5 mx-auto">
 			<form class="border border-light p-5 z-depth-1-half" method="POST" action="/register">
 
@@ -20,6 +20,14 @@
 			    <div class="col-sm-10">
 			      <div class="md-form mt-0">
 			        <input type="text" class="form-control" id="UserName" required name="username" placeholder="Username *">
+			      </div>
+			    </div>
+			  </div>
+		    <div class="form-group row">
+			    <label for="email" class="col-sm-2 col-form-label"><i class="fas fa-envelope prefix"></i></label>
+			    <div class="col-sm-10">
+			      <div class="md-form mt-0">
+			        <input type="email" class="form-control" id="email" required name="email" placeholder="Email *">
 			      </div>
 			    </div>
 			  </div>
@@ -44,6 +52,46 @@
 			        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
 		        		Use 8 character password for more security
 		    		</small>
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group row">
+			    <label for="Username" class="col-sm-2 col-form-label"><i class="fas fa-venus-mars prefix"></i></label>
+			    <div class="col-sm-10">
+					<div class="md-form mt-0"> 
+						<select class="form-control" required name="gender" id="gender">
+							<option value="" disabled selected>Gender *</option>
+							<option value="male" >Male</option>
+							<option value="female" >Female</option>
+						</select>
+					</div>
+			  </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label for="Username" class="col-sm-2 col-form-label"><i class="fas fa-calendar-alt prefix"></i></label>
+			    <div class="col-sm-10">
+			      <div class="md-form mt-0">
+			        <input type="number" class="form-control" id="age" required name="age" placeholder="Age *">
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label for="Username" class="col-sm-2 col-form-label"><i class="fas fa-balance-scale prefix"></i></label>
+			    <div class="col-sm-10">
+			      <div class="md-form mt-0">
+			        <input type="number" step=".01" class="form-control" id="weight" required name="weight" placeholder="Weight in Kgs *">
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label for="Username" class="col-sm-2 col-form-label"><i class="fas fa-ruler-vertical prefix"></i></label>
+			    <div class="col-sm-10">
+			      <div class="md-form mt-0">
+			        <input type="number" step=".01"class="form-control" id="height" required name="height" placeholder="Height in cm *">
 			      </div>
 			    </div>
 			  </div>
