@@ -4,7 +4,8 @@ const User = require("../models/user");
 module.exports = {
 
     showDashboard: (req, res) => {
-        Health.find({}).sort([['createdAt', -1]]).exec((err, health) => {
+        let query = { userId: res.locals.currentuser._id };
+        Health.find(query).sort([['createdAt', -1]]).exec((err, health) => {
             if (err) {
                 console.log(err);
             }
