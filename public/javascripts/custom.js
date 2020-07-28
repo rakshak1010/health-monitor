@@ -82,6 +82,9 @@ render_chart = function (
   n_days
 ) {
   last_clicked_param = title;
+
+  $("#filter-report").removeClass("d-none");
+
   var dummy = [
     {
       x: new Date("July 1, 2020 11:13:00"),
@@ -248,6 +251,8 @@ render_chart_bp = function (
   attribute,
   n_days
 ) {
+
+  $("#filter-report").removeClass("d-none");
   last_clicked_param = title;
 
   data = [
