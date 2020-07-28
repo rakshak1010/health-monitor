@@ -319,3 +319,16 @@ render_chart_bp = function (
   });
   chart.render();
 };
+
+$(".btn-weight").click(() => {
+  $(".inp-weight").removeClass("d-none");
+  $(".btn-weight").text("Save");
+  $(".btn-weight").removeClass("btn-primary");
+  $(".btn-weight").addClass("btn-success");
+});
+$(".btn-height").click(() => {
+  $(".inp-height").removeClass("d-none");
+  $(".btn-height").text("Save");
+  $(".btn-height").removeClass("btn-primary");
+  $(".btn-height").addClass("btn-success");
+});
