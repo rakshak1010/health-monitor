@@ -30,6 +30,12 @@ const HealthSchema = new mongoose.Schema(
                 y: Number,
                 x: Date
             },
+        ],
+        heartRate: [
+            {
+                y: Number,
+                x: Date
+            },
         ]
     },
     {
