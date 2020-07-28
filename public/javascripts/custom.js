@@ -1,14 +1,5 @@
 var last_clicked_param = "ECG";
-function sortResults(arr, prop, asc) {
-  arr.sort(function (a, b) {
-    if (asc) {
-      return a[prop] > b[prop] ? 1 : a[prop] < b[prop] ? -1 : 0;
-    } else {
-      return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
-    }
-  });
-  renderResults();
-}
+
 filter_days_driver = function (days) {
   if (last_clicked_param == "TEMPERATURE") {
     render_chart(
@@ -82,90 +73,11 @@ render_chart = function (
   n_days
 ) {
   last_clicked_param = title;
-
   $("#filter-report").removeClass("d-none");
-
-  var dummy = [
-    {
-      x: new Date("July 1, 2020 11:13:00"),
-      y: 100,
-    },
-    {
-      x: new Date("July 2, 2020 11:13:00"),
-      y: 99.4,
-    },
-    {
-      x: new Date("July 3, 2020 11:13:00"),
-      y: 99.2,
-    },
-    {
-      x: new Date("July 4, 2020 11:13:00"),
-      y: 104,
-      indexLabel: "highest",
-    },
-    {
-      x: new Date("July 5, 2020 11:13:00"),
-      y: 102.5,
-    },
-    {
-      x: new Date("July 6, 2020 11:13:00"),
-      y: 100.1,
-    },
-    {
-      x: new Date("July 7, 2020 11:13:00"),
-      y: 99,
-    },
-    {
-      x: new Date("July 8, 2020 11:13:00"),
-      y: 98.6,
-    },
-    {
-      x: new Date("July 9, 2020 11:13:00"),
-      y: 99,
-    },
-    {
-      x: new Date("July 10, 2020 11:13:00"),
-      y: 102.5,
-    },
-    {
-      x: new Date("July 11, 2020 11:13:00"),
-      y: 100.1,
-    },
-    {
-      x: new Date("July 12, 2020 11:13:00"),
-      y: 99,
-    },
-    {
-      x: new Date("July 13, 2020 11:13:00"),
-      y: 98.6,
-    },
-    {
-      x: new Date("July 14, 2020 11:13:00"),
-      y: 99,
-    },
-    {
-      x: new Date("July 15, 2020 11:13:00"),
-      y: 102.5,
-    },
-    {
-      x: new Date("July 16, 2020 11:13:00"),
-      y: 100.1,
-    },
-    {
-      x: new Date("July 17, 2020 11:13:00"),
-      y: 99,
-    },
-    {
-      x: new Date("July 18, 2020 11:13:00"),
-      y: 98.6,
-    },
-    {
-      x: new Date("July 19, 2020 11:13:00"),
-      y: 99,
-    },
-  ];
+  data = val["bp"];
   let par_strip = {};
   if (title == "TEMPERATURE") {
+    data = val["temperature"];
     par_strip = [
       {
         value: 98.7,
@@ -174,6 +86,7 @@ render_chart = function (
     ];
   }
   if (title == "SPO2") {
+    data = val["spo2"];
     par_strip = [
       {
         value: 96,
@@ -182,6 +95,8 @@ render_chart = function (
     ];
   }
   if (title == "HEART RATE") {
+    data = val["heartRate"];
+
     par_strip = [
       {
         value: 65,
@@ -195,6 +110,126 @@ render_chart = function (
       },
     ];
   }
+  //   data = [
+  //     {
+  //       x: new Date("July 1, 2020 11:13:00"),
+  //       y: 100,
+  //     },
+  //     {
+  //       x: new Date("July 2, 2020 11:13:00"),
+  //       y: 99.4,
+  //     },
+  //     {
+  //       x: new Date("July 3, 2020 11:13:00"),
+  //       y: 99.2,
+  //     },
+  //     {
+  //       x: new Date("July 4, 2020 11:13:00"),
+  //       y: 104,
+  //       indexLabel: "highest",
+  //     },
+  //     {
+  //       x: new Date("July 5, 2020 11:13:00"),
+  //       y: 102.5,
+  //     },
+  //     {
+  //       x: new Date("July 6, 2020 11:13:00"),
+  //       y: 100.1,
+  //     },
+  //     {
+  //       x: new Date("July 7, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 8, 2020 11:13:00"),
+  //       y: 98.6,
+  //     },
+  //     {
+  //       x: new Date("July 9, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 10, 2020 11:13:00"),
+  //       y: 102.5,
+  //     },
+  //     {
+  //       x: new Date("July 11, 2020 11:13:00"),
+  //       y: 100.1,
+  //     },
+  //     {
+  //       x: new Date("July 12, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 13, 2020 11:13:00"),
+  //       y: 98.6,
+  //     },
+  //     {
+  //       x: new Date("July 14, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 15, 2020 11:13:00"),
+  //       y: 102.5,
+  //     },
+  //     {
+  //       x: new Date("July 16, 2020 11:13:00"),
+  //       y: 100.1,
+  //     },
+  //     {
+  //       x: new Date("July 17, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 18, 2020 11:13:00"),
+  //       y: 98.6,
+  //     },
+  //     {
+  //       x: new Date("July 19, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 20, 2020 11:13:00"),
+  //       y: 102.5,
+  //     },
+  //     {
+  //       x: new Date("July 21, 2020 11:13:00"),
+  //       y: 100.1,
+  //     },
+  //     {
+  //       x: new Date("July 22, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 23, 2020 11:13:00"),
+  //       y: 98.6,
+  //     },
+  //     {
+  //       x: new Date("July 24, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 25, 2020 11:13:00"),
+  //       y: 102.5,
+  //     },
+  //     {
+  //       x: new Date("July 26, 2020 11:13:00"),
+  //       y: 100.1,
+  //     },
+  //     {
+  //       x: new Date("July 27, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //     {
+  //       x: new Date("July 28, 2020 11:13:00"),
+  //       y: 98.6,
+  //     },
+  //     {
+  //       x: new Date("July 29, 2020 11:13:00"),
+  //       y: 99,
+  //     },
+  //   ];
+
   //   let prop = "x";
   //   let asc = "true";
   //   data.sort(function (a, b) {
@@ -234,7 +269,7 @@ render_chart = function (
         // legendText: title,
         markerSize: 5,
         color: "rgba(54,158,173,.7)",
-        dataPoints: dummy,
+        dataPoints: data,
         // dataPoints: data[attribute]
       },
     ],
@@ -251,165 +286,161 @@ render_chart_bp = function (
   attribute,
   n_days
 ) {
-
   $("#filter-report").removeClass("d-none");
   last_clicked_param = title;
 
-  data = [
-    {
-      x: new Date("July 1, 2020 11:13:00"),
-      y1: 120,
-      y2: 80,
-    },
-    {
-      x: new Date("July 2, 2020 11:13:00"),
-      y1: 110,
-      y2: 90,
-    },
-    {
-      x: new Date("July 3, 2020 11:13:00"),
-      y1: 128,
-      y2: 88,
-    },
-    {
-      x: new Date("July 4, 2020 11:13:00"),
-      y1: 136,
-      y2: 82,
-    },
-    {
-      x: new Date("July 5, 2020 11:13:00"),
-      y1: 116,
-      y2: 77,
-    },
-    {
-      x: new Date("July 6, 2020 11:13:00"),
-      y1: 120,
-      y2: 70,
-    },
-    {
-      x: new Date("July 7, 2020 11:13:00"),
-      y1: 130,
-      y2: 77,
-    },
-    {
-      x: new Date("July 8, 2020 11:13:00"),
-      y1: 138,
-      y2: 82,
-    },
-    {
-      x: new Date("July 9, 2020 11:13:00"),
-      y1: 130,
-      y2: 80,
-    },
-    {
-      x: new Date("July 10, 2020 11:13:00"),
-      y1: 140,
-      y2: 92,
-    },
-    {
-      x: new Date("July 11, 2020 11:13:00"),
-      y1: 135,
-      y2: 86,
-    },
-    {
-      x: new Date("July 12, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-    {
-      x: new Date("July 13, 2020 11:13:00"),
-      y1: 137,
-      y2: 76,
-    },
-    {
-      x: new Date("July 14, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-    {
-      x: new Date("July 15, 2020 11:13:00"),
-      y1: 140,
-      y2: 85,
-    },
-    {
-      x: new Date("July 16, 2020 11:13:00"),
-      y1: 135,
-      y2: 87,
-    },
-    {
-      x: new Date("July 17, 2020 11:13:00"),
-      y1: 133,
-      y2: 83,
-    },
-    {
-      x: new Date("July 18, 2020 11:13:00"),
-      y1: 126,
-      y2: 79,
-    },
-    {
-      x: new Date("July 19, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-    {
-      x: new Date("July 20, 2020 11:13:00"),
-      y1: 140,
-      y2: 92,
-    },
-    {
-      x: new Date("July 21, 2020 11:13:00"),
-      y1: 135,
-      y2: 86,
-    },
-    {
-      x: new Date("July 22, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-    {
-      x: new Date("July 23, 2020 11:13:00"),
-      y1: 137,
-      y2: 76,
-    },
-    {
-      x: new Date("July 24, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-    {
-      x: new Date("July 25, 2020 11:13:00"),
-      y1: 140,
-      y2: 85,
-    },
-    {
-      x: new Date("July 26, 2020 11:13:00"),
-      y1: 135,
-      y2: 87,
-    },
-    {
-      x: new Date("July 27, 2020 11:13:00"),
-      y1: 133,
-      y2: 83,
-    },
-    {
-      x: new Date("July 28, 2020 11:13:00"),
-      y1: 126,
-      y2: 79,
-    },
-    {
-      x: new Date("July 29, 2020 11:13:00"),
-      y1: 130,
-      y2: 82,
-    },
-  ];
+  //   data = [
+  //     {
+  //       x: new Date("July 1, 2020 11:13:00"),
+  //       y1: 120,
+  //       y2: 80,
+  //     },
+  //     {
+  //       x: new Date("July 2, 2020 11:13:00"),
+  //       y1: 110,
+  //       y2: 90,
+  //     },
+  //     {
+  //       x: new Date("July 3, 2020 11:13:00"),
+  //       y1: 128,
+  //       y2: 88,
+  //     },
+  //     {
+  //       x: new Date("July 4, 2020 11:13:00"),
+  //       y1: 136,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 5, 2020 11:13:00"),
+  //       y1: 116,
+  //       y2: 77,
+  //     },
+  //     {
+  //       x: new Date("July 6, 2020 11:13:00"),
+  //       y1: 120,
+  //       y2: 70,
+  //     },
+  //     {
+  //       x: new Date("July 7, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 77,
+  //     },
+  //     {
+  //       x: new Date("July 8, 2020 11:13:00"),
+  //       y1: 138,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 9, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 80,
+  //     },
+  //     {
+  //       x: new Date("July 10, 2020 11:13:00"),
+  //       y1: 140,
+  //       y2: 92,
+  //     },
+  //     {
+  //       x: new Date("July 11, 2020 11:13:00"),
+  //       y1: 135,
+  //       y2: 86,
+  //     },
+  //     {
+  //       x: new Date("July 12, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 13, 2020 11:13:00"),
+  //       y1: 137,
+  //       y2: 76,
+  //     },
+  //     {
+  //       x: new Date("July 14, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 15, 2020 11:13:00"),
+  //       y1: 140,
+  //       y2: 85,
+  //     },
+  //     {
+  //       x: new Date("July 16, 2020 11:13:00"),
+  //       y1: 135,
+  //       y2: 87,
+  //     },
+  //     {
+  //       x: new Date("July 17, 2020 11:13:00"),
+  //       y1: 133,
+  //       y2: 83,
+  //     },
+  //     {
+  //       x: new Date("July 18, 2020 11:13:00"),
+  //       y1: 126,
+  //       y2: 79,
+  //     },
+  //     {
+  //       x: new Date("July 19, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 20, 2020 11:13:00"),
+  //       y1: 140,
+  //       y2: 92,
+  //     },
+  //     {
+  //       x: new Date("July 21, 2020 11:13:00"),
+  //       y1: 135,
+  //       y2: 86,
+  //     },
+  //     {
+  //       x: new Date("July 22, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 23, 2020 11:13:00"),
+  //       y1: 137,
+  //       y2: 76,
+  //     },
+  //     {
+  //       x: new Date("July 24, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //     {
+  //       x: new Date("July 25, 2020 11:13:00"),
+  //       y1: 140,
+  //       y2: 85,
+  //     },
+  //     {
+  //       x: new Date("July 26, 2020 11:13:00"),
+  //       y1: 135,
+  //       y2: 87,
+  //     },
+  //     {
+  //       x: new Date("July 27, 2020 11:13:00"),
+  //       y1: 133,
+  //       y2: 83,
+  //     },
+  //     {
+  //       x: new Date("July 28, 2020 11:13:00"),
+  //       y1: 126,
+  //       y2: 79,
+  //     },
+  //     {
+  //       x: new Date("July 29, 2020 11:13:00"),
+  //       y1: 130,
+  //       y2: 82,
+  //     },
+  //   ];
 
   let threshold = new Date();
-  console.log(n_days);
   threshold.setDate(threshold.getDate() - n_days);
   temp = [];
   for (i = 0; i < data.length; i++) {
-    console.log(data[i]["x"]);
-    console.log(+data[i]["x"] > +threshold);
     if (+data[i]["x"] > +threshold) {
       temp.push(data[i]);
     }
@@ -425,7 +456,6 @@ render_chart_bp = function (
     data_high.push({ y: data[i]["y1"], x: data[i]["x"] });
   }
   if (title == "BLOOD PRESSURE") {
-    console.log("hello");
     par_strip = [
       {
         value: 110,
