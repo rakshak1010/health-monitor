@@ -114,16 +114,16 @@ aria-hidden="true">
                     <div class="modal-body">
 
                         <div class="row">
-                            <div class="col-12 pb-2">
+                            <div class="col-12 pb-2 text-center">
                                 <% if(currentuser.gender === "male"){ %>
-                                <img src="./images/male_icon.jpg" height="100%" width="100%">
+                                <img src="./images/male_icon.jpg">
                                 <% } else { %>
-                                <img src="./images/female_icon.jpg" height="100%" width="100%">
+                                <img src="./images/female_icon.jpg">
                                 <% } %>
                             </div>
                             <hr>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mt-4">
                             <div class="container-fluid">
                                 <p><span class="font-weight-bold">Name:</span> <span
                                         class="text-uppercase"><%=currentuser.username%></span>
