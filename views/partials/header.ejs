@@ -103,65 +103,69 @@ aria-hidden="true">
   <!-- Add class .modal-full-height and then add class .modal-left (or other classes from list above) to set a position to the modal -->
   <div class="modal-dialog modal-full-height modal-left" role="document">
 
+    <% if(currentuser){ %>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title w-100" id="myModalLabel"><span
+                class="text-uppercase"><%=currentuser.username%></span>'s
+              Profile</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel"><span class="text-uppercase"><%=currentuser.username%></span>'s
-        Profile</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-
-      <div class="row">
-        <div class="col-12 pb-2">
-          <% if(currentuser.gender === "male"){ %>
-          <img src="./images/male_icon.png" height="100%" width="100%">
-          <% } else { %>
-          <img src="./images/female_icon.png" height="100%" width="100%">
-          <% } %>
-        </div>
-        <hr>
-      </div>
-      <div class="col-12">
-        <div class="container-fluid">
-          <p><span class="font-weight-bold">Name:</span> <span class="text-uppercase"><%=currentuser.username%></span>
-          </p>
-          <p><span class="font-weight-bold">Email:</span> <%=currentuser.email%></p>
-          <p><span class="font-weight-bold">Age:</span> <%=currentuser.age%> years</p>
-          <p><span class="font-weight-bold">Gender:</span> <span class="text-uppercase"><%=currentuser.gender%></span>
-          </p>
-          <p><span class="font-weight-bold">BMI:</span>
-            <%= ((currentuser.weight/(currentuser.height*currentuser.height))*10000).toFixed(2) %> </p>
-          <p><span class="font-weight-bold">Height:</span>
-            <%=currentuser.height%> cm
-          <form method="POST" action="/update?field=height">
-            <div class="md-form mt-0 d-none inp-height">
-              <input type="number" step=".01" class="form-control" id="height" required name="height"
-                placeholder="Height in cm *">
+            <div class="row">
+              <div class="col-12 pb-2">
+                <% if(currentuser.gender === "male"){ %>
+                <img src="./images/male_icon.png" height="100%" width="100%">
+                <% } else { %>
+                <img src="./images/female_icon.png" height="100%" width="100%">
+                <% } %>
+              </div>
+              <hr>
             </div>
-            <button type="submit" class="btn btn-primary btn-sm btn-height">Update</button>
-          </form>
-          </p>
-          <p><span class="font-weight-bold">Weight:</span>
-            <%=currentuser.weight%> kg
-          <form method="POST" action="/update?field=weight">
-            <div class="md-form mt-0 d-none inp-weight">
-              <input type="number" step=".01" class="form-control" id="weight" required name="weight"
-                placeholder="Weight in Kgs *">
-            </div>
-            <button type="submit" class="btn btn-primary btn-sm btn-weight">Update</button>
-          </form>
+            <div class="col-12">
+              <div class="container-fluid">
+                <p><span class="font-weight-bold">Name:</span> <span
+                    class="text-uppercase"><%=currentuser.username%></span>
+                </p>
+                <p><span class="font-weight-bold">Email:</span> <%=currentuser.email%></p>
+                <p><span class="font-weight-bold">Age:</span> <%=currentuser.age%> years</p>
+                <p><span class="font-weight-bold">Gender:</span> <span
+                    class="text-uppercase"><%=currentuser.gender%></span>
+                </p>
+                <p><span class="font-weight-bold">BMI:</span>
+                  <%= ((currentuser.weight/(currentuser.height*currentuser.height))*10000).toFixed(2) %> </p>
+                <p><span class="font-weight-bold">Height:</span>
+                  <%=currentuser.height%> cm
+                <form method="POST" action="/update?field=height">
+                  <div class="md-form mt-0 d-none inp-height">
+                    <input type="number" step=".01" class="form-control" id="height" required name="height"
+                      placeholder="Height in cm *">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-sm btn-height">Update</button>
+                </form>
+                </p>
+                <p><span class="font-weight-bold">Weight:</span>
+                  <%=currentuser.weight%> kg
+                <form method="POST" action="/update?field=weight">
+                  <div class="md-form mt-0 d-none inp-weight">
+                    <input type="number" step=".01" class="form-control" id="weight" required name="weight"
+                      placeholder="Weight in Kgs *">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-sm btn-weight">Update</button>
+                </form>
 
-          </p>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="modal-footer justify-content-center">
-      <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
-    </div>
-    </div>
+        <% } %>
     </div>
     </div>
     <!-- Full Height Modal left -->
