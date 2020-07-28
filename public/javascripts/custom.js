@@ -1,14 +1,5 @@
 var last_clicked_param = "ECG";
-function sortResults(arr, prop, asc) {
-  arr.sort(function (a, b) {
-    if (asc) {
-      return a[prop] > b[prop] ? 1 : a[prop] < b[prop] ? -1 : 0;
-    } else {
-      return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
-    }
-  });
-  renderResults();
-}
+
 filter_days_driver = function (days) {
   if (last_clicked_param == "TEMPERATURE") {
     render_chart(
@@ -82,7 +73,43 @@ render_chart = function (
   n_days
 ) {
   last_clicked_param = title;
-  var dummy = [
+  data = val["bp"];
+  let par_strip = {};
+  if (title == "TEMPERATURE") {
+    data = val["temperature"];
+    par_strip = [
+      {
+        value: 98.7,
+        label: "Normal Body Temperature",
+      },
+    ];
+  }
+  if (title == "SPO2") {
+    data = val["spo2"];
+    par_strip = [
+      {
+        value: 96,
+        label: "Normal",
+      },
+    ];
+  }
+  if (title == "HEART RATE") {
+    data = val["heartRate"];
+
+    par_strip = [
+      {
+        value: 65,
+        label: "Normal Lower",
+        color: "rgba(255,0,0,1)",
+      },
+      {
+        value: 85,
+        label: "Normal Upper",
+        color: "rgba(255,0,0,1)",
+      },
+    ];
+  }
+  data = [
     {
       x: new Date("July 1, 2020 11:13:00"),
       y: 100,
@@ -160,38 +187,48 @@ render_chart = function (
       x: new Date("July 19, 2020 11:13:00"),
       y: 99,
     },
+    {
+      x: new Date("July 20, 2020 11:13:00"),
+      y: 102.5,
+    },
+    {
+      x: new Date("July 21, 2020 11:13:00"),
+      y: 100.1,
+    },
+    {
+      x: new Date("July 22, 2020 11:13:00"),
+      y: 99,
+    },
+    {
+      x: new Date("July 23, 2020 11:13:00"),
+      y: 98.6,
+    },
+    {
+      x: new Date("July 24, 2020 11:13:00"),
+      y: 99,
+    },
+    {
+      x: new Date("July 25, 2020 11:13:00"),
+      y: 102.5,
+    },
+    {
+      x: new Date("July 26, 2020 11:13:00"),
+      y: 100.1,
+    },
+    {
+      x: new Date("July 27, 2020 11:13:00"),
+      y: 99,
+    },
+    {
+      x: new Date("July 28, 2020 11:13:00"),
+      y: 98.6,
+    },
+    {
+      x: new Date("July 29, 2020 11:13:00"),
+      y: 99,
+    },
   ];
-  let par_strip = {};
-  if (title == "TEMPERATURE") {
-    par_strip = [
-      {
-        value: 98.7,
-        label: "Normal Body Temperature",
-      },
-    ];
-  }
-  if (title == "SPO2") {
-    par_strip = [
-      {
-        value: 96,
-        label: "Normal",
-      },
-    ];
-  }
-  if (title == "HEART RATE") {
-    par_strip = [
-      {
-        value: 65,
-        label: "Normal Lower",
-        color: "rgba(255,0,0,1)",
-      },
-      {
-        value: 85,
-        label: "Normal Upper",
-        color: "rgba(255,0,0,1)",
-      },
-    ];
-  }
+
   //   let prop = "x";
   //   let asc = "true";
   //   data.sort(function (a, b) {
@@ -231,7 +268,7 @@ render_chart = function (
         // legendText: title,
         markerSize: 5,
         color: "rgba(54,158,173,.7)",
-        dataPoints: dummy,
+        dataPoints: data,
         // dataPoints: data[attribute]
       },
     ],
@@ -403,8 +440,6 @@ render_chart_bp = function (
   threshold.setDate(threshold.getDate() - n_days);
   temp = [];
   for (i = 0; i < data.length; i++) {
-    console.log(data[i]["x"]);
-    console.log(+data[i]["x"] > +threshold);
     if (+data[i]["x"] > +threshold) {
       temp.push(data[i]);
     }
