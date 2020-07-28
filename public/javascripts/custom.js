@@ -112,15 +112,15 @@ render_chart = function (
   }
   data = [
     {
-      x: new Date("July 1, 2020 11:13:00"),
+      x: new Date("May 5, 2020 11:13:00"),
       y: 100,
     },
     {
-      x: new Date("July 2, 2020 11:13:00"),
+      x: new Date("June 8, 2020 11:13:00"),
       y: 99.4,
     },
     {
-      x: new Date("July 3, 2020 11:13:00"),
+      x: new Date("June 12, 2020 11:13:00"),
       y: 99.2,
     },
     {
@@ -291,12 +291,12 @@ render_chart_bp = function (
 
   data = [
     {
-      x: new Date("July 1, 2020 11:13:00"),
+      x: new Date("June 5, 2020 11:13:00"),
       y1: 120,
       y2: 80,
     },
     {
-      x: new Date("July 2, 2020 11:13:00"),
+      x: new Date("June 9, 2020 11:13:00"),
       y1: 110,
       y2: 90,
     },
@@ -493,7 +493,7 @@ render_chart_bp = function (
     },
     data: [
       {
-        toolTipContent: "{y} " + unit_name.toString(),
+        toolTipContent: "{y} " + unit_name.toString() + "\n{x}",
         type: "line",
         showInLegend: true,
         legendText: "Systolic Pressure ",
@@ -503,7 +503,7 @@ render_chart_bp = function (
         dataPoints: data_high,
       },
       {
-        toolTipContent: "{y} " + unit_name.toString(),
+        toolTipContent: "{y} " + unit_name.toString() + "\n{x}",
         type: "line",
         showInLegend: true,
         legendText: "Diastolic Pressure",
