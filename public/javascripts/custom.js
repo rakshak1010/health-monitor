@@ -1,3 +1,76 @@
+var last_clicked_param = "ECG";
+function sortResults(arr, prop, asc) {
+  arr.sort(function (a, b) {
+    if (asc) {
+      return a[prop] > b[prop] ? 1 : a[prop] < b[prop] ? -1 : 0;
+    } else {
+      return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
+    }
+  });
+  renderResults();
+}
+filter_days_driver = function (days) {
+  if (last_clicked_param == "TEMPERATURE") {
+    render_chart(
+      "graph",
+      "TEMPERATURE",
+      "line",
+      " F",
+      "Temperature in Fahrenheits",
+      val,
+      "temperature",
+      days
+    );
+  }
+  if (last_clicked_param == "SPO2") {
+    render_chart(
+      "graph",
+      "SPO2",
+      "spline",
+      " F",
+      "Oxygen in Volumes",
+      val,
+      "spo2",
+      days
+    );
+  }
+  if (last_clicked_param == "HEART RATE") {
+    render_chart(
+      "graph",
+      "HEART RATE",
+      "line",
+      "",
+      "Beats per minute",
+      val,
+      "heartrate",
+      days
+    );
+  }
+  if (last_clicked_param == "BLOOD PRESSURE") {
+    render_chart_bp(
+      "graph",
+      "BLOOD PRESSURE",
+      " mm/Hg",
+      "Pressure in mm/Hg",
+      val,
+      "bp",
+      days
+    );
+  }
+  if (last_clicked_param == "ECG") {
+    render_chart(
+      "graph",
+      "ECG",
+      "line",
+      " V",
+      "Volatage in Volts",
+      val,
+      "ecg",
+      days
+    );
+  }
+};
+
 render_chart = function (
   container_id,
   title,
@@ -5,8 +78,10 @@ render_chart = function (
   unit_name,
   Yaxis_title,
   data,
-  attribute
+  attribute,
+  n_days
 ) {
+  last_clicked_param = title;
   var dummy = [
     {
       x: new Date("July 1, 2020 11:13:00"),
@@ -103,7 +178,7 @@ render_chart = function (
       },
     ];
   }
-  if (title == "SPO2") {
+  if (title == "HEART RATE") {
     par_strip = [
       {
         value: 65,
@@ -117,6 +192,25 @@ render_chart = function (
       },
     ];
   }
+  //   let prop = "x";
+  //   let asc = "true";
+  //   data.sort(function (a, b) {
+  //     if (asc) {
+  //       return a[prop] > b[prop] ? 1 : a[prop] < b[prop] ? -1 : 0;
+  //     } else {
+  //       return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
+  //     }
+  //   });
+
+  let temp = [];
+  let threshold = new Date();
+  threshold.setDate(threshold.getDate() - n_days);
+  for (i = 0; i < data.length; i++) {
+    if (data[i]["x"] >= threshold) {
+      temp.push(data[i]);
+    }
+  }
+  data = temp;
   var chart = new CanvasJS.Chart(container_id, {
     animationEnabled: true,
     zoomEnabled: true,
@@ -151,8 +245,11 @@ render_chart_bp = function (
   unit_name,
   Yaxis_title,
   data,
-  attribute
+  attribute,
+  n_days
 ) {
+  last_clicked_param = title;
+
   data = [
     {
       x: new Date("July 1, 2020 11:13:00"),
@@ -249,7 +346,72 @@ render_chart_bp = function (
       y1: 130,
       y2: 82,
     },
+    {
+      x: new Date("July 20, 2020 11:13:00"),
+      y1: 140,
+      y2: 92,
+    },
+    {
+      x: new Date("July 21, 2020 11:13:00"),
+      y1: 135,
+      y2: 86,
+    },
+    {
+      x: new Date("July 22, 2020 11:13:00"),
+      y1: 130,
+      y2: 82,
+    },
+    {
+      x: new Date("July 23, 2020 11:13:00"),
+      y1: 137,
+      y2: 76,
+    },
+    {
+      x: new Date("July 24, 2020 11:13:00"),
+      y1: 130,
+      y2: 82,
+    },
+    {
+      x: new Date("July 25, 2020 11:13:00"),
+      y1: 140,
+      y2: 85,
+    },
+    {
+      x: new Date("July 26, 2020 11:13:00"),
+      y1: 135,
+      y2: 87,
+    },
+    {
+      x: new Date("July 27, 2020 11:13:00"),
+      y1: 133,
+      y2: 83,
+    },
+    {
+      x: new Date("July 28, 2020 11:13:00"),
+      y1: 126,
+      y2: 79,
+    },
+    {
+      x: new Date("July 29, 2020 11:13:00"),
+      y1: 130,
+      y2: 82,
+    },
   ];
+
+  let threshold = new Date();
+  console.log(n_days);
+  threshold.setDate(threshold.getDate() - n_days);
+  temp = [];
+  for (i = 0; i < data.length; i++) {
+    console.log(data[i]["x"]);
+    console.log(+data[i]["x"] > +threshold);
+    if (+data[i]["x"] > +threshold) {
+      temp.push(data[i]);
+    }
+  }
+
+  data = temp;
+
   data_low = [];
   data_high = [];
   var i;
