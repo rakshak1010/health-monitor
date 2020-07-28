@@ -1,9 +1,9 @@
 <%- include('partials/header') %>
 
-<div class="container-fluid px-5" style="margin-top: 50px;">
+<div class="container-fluid px-5" style="margin-top: 80px;">
     <!-- <h1 class="h1 py-4 text-center">Dashboard</h1> -->
-    <div class="row">
-        <div class="col-lg-6" style="padding: 0.5rem;">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-2">
             <h1>Last results</h1>
 
             <div class="p-1" style="background-color: rgba(0,0,255,0.1);">
@@ -82,140 +82,79 @@
 
             </div>
         </div>
-        <div class="col-lg-6" style="padding: 0.5rem;">
+        <div class="col-lg-5 mx-2">
             <h1>Past Reports</h1>
-            <div class="p-3" style="background-color: rgba(0,0,255,0.1);">
-                <div class="row justify-content-center" id="social-icons-row" style="width: 95%;">
-                    <div class="mt-3 col-lg-6 col-6 text-center">
-                        <a>
-                            <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable"
-                                onclick="render_chart('graph','ECG','line',' V','Volatage in Volts',val,'ecg')">
-                                <i class="fas fa-file-medical-alt"></i> ECG
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-3 col-lg-6 col-6 text-center"
-                        onclick="render_chart('graph','TEMPERATURE','line',' F','Temperature in Fahrenheits',val,'temperature')">
-                        <a>
-                            <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                <i class="fas fa-temperature-high"></i> Temperature
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-3 col-lg-6 col-6 text-center"
-                        onclick="render_chart('graph','SPO2','spline',' F','Oxygen in Volumes',val,'spo2')">
-                        <a>
-                            <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                <i class="fas fa-lungs"></i> SPO2
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-3 col-lg-6 col-6 text-center"
-                        onclick="render_chart_bp('graph','BLOOD PRESSURE',' mm/Hg','Pressure in mm/Hg',val,'bp')">
-                        <a>
-                            <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                <i class="fas fa-map-marker-alt pr-1"></i> BP
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-3 col-lg-6 col-6 text-center"
-                        onclick="render_chart('graph','HEART RATE','line','','Beats per minute',val,'heartrate')">
-                        <a>
-                            <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                <i class="fas fa-heartbeat"></i> Heart Rate
-                            </div>
-                        </a>
-                    </div>
+            <div class="row justify-content-center py-3" id="social-icons-row"
+                style="background-color: rgba(0,0,255,0.1);">
+                <div class="my-2 col-sm-5 text-center">
+                    <a>
+                        <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable"
+                            onclick="render_chart('graph','ECG','line',' V','Volatage in Volts',val,'ecg',30)">
+                            <i class="fas fa-file-medical-alt"></i> ECG
+                        </div>
+                    </a>
+                </div>
+                <div class="my-2 col-sm-5 text-center"
+                    onclick="render_chart('graph','TEMPERATURE','line',' F','Temperature in Fahrenheits',val,'temperature',30)">
+                    <a>
+                        <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
+                            <i class="fas fa-temperature-high"></i> Temperature
+                        </div>
+                    </a>
+                </div>
+                <div class="my-2 col-sm-5 text-center"
+                    onclick="render_chart('graph','SPO2','spline',' F','Oxygen in Volumes',val,'spo2',30)">
+                    <a>
+                        <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
+                            <i class="fas fa-lungs"></i> SPO2
+                        </div>
+                    </a>
+                </div>
+                <div class="my-2 col-sm-5 text-center"
+                    onclick="render_chart_bp('graph','BLOOD PRESSURE',' mm/Hg','Pressure in mm/Hg',val,'bp',30)">
+                    <a>
+                        <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
+                            <i class="fas fa-map-marker-alt pr-1"></i> BP
+                        </div>
+                    </a>
+                </div>
+                <div class="my-2 col-sm-5 text-center"
+                    onclick="render_chart('graph','HEART RATE','line','','Beats per minute',val,'heartrate',30)">
+                    <a>
+                        <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
+                            <i class="fas fa-heartbeat"></i> Heart Rate
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-7 col-sm-12">
-            <div id="graph" class=""></div>
-        </div>
-        <div class="col-lg-5 col-sm-12">
-            <h1>Past Reports</h1>
-            <div class="p-1" style="background-color: rgba(0,0,255,0.1);">
-                <div class="container-fluid">
-                    <div class="row justify-content-center" id="social-icons-row" style="width: 95%;">
-                        <div class="mt-3 col-lg-6 col-6 text-center">
-                            <a>
-                                <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable"
-                                    onclick="render_chart('graph','ECG','line',' V','Volatage in Volts',val,'ecg')">
-                                    <i class="fas fa-file-medical-alt"></i> ECG
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mt-3 col-lg-6 col-6 text-center"
-                            onclick="render_chart('graph','TEMPERATURE','line',' F','Temperature in Fahrenheits',val,'temperature')">
-                            <a>
-                                <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                    <i class="fas fa-temperature-high"></i> Temperature
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mt-3 col-lg-6 col-6 text-center"
-                            onclick="render_chart('graph','SPO2','spline',' F','Oxygen in Volumes',val,'spo2')">
-                            <a>
-                                <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                    <i class="fas fa-lungs"></i> SPO2
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mt-3 col-lg-6 col-6 text-center"
-                            onclick="render_chart_bp('graph','BLOOD PRESSURE',' mm/Hg','Pressure in mm/Hg',val,'bp')">
-                            <a>
-                                <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                    <i class="fas fa-map-marker-alt pr-1"></i> BP
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mt-3 col-lg-6 col-6 text-center"
-                            onclick="render_chart('graph','HEART RATE','line','','Beats per minute',val,'heartrate')">
-                            <a>
-                                <div class="bg-white zoom-effect text-black py-2 btn-rounded shdw-med hoverable">
-                                    <i class="fas fa-heartbeat"></i> Heart Rate
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <div class="row justify-content-center my-3">
+        <div class="col-lg-3 col-sm-12 mt-3 d-none" id="filter-report">
+            <h1>Filter Reports</h1>
+            <div class="container py-3 text-center" style="background-color: rgba(0,0,255,0.1);">
+                <button class="btn btn-primary my-3" onclick="filter_days_driver(15)">
+                    <a>
+                        15 Days
+                    </a>
+                </button>
+                <button class="btn btn-primary my-3" onclick="filter_days_driver(30)">
+                    <a>
+                        1 Month
+                    </a>
+                </button>
+                <button class="btn btn-primary my-3" onclick="filter_days_driver(365)">
+                    <a>
+                        1 Year
+                    </a>
+                </button>
             </div>
+        </div>
+        <div class="col-lg-8 col-sm-12 mt-3">
+            <div id="graph" class=""></div>
         </div>
     </div>
 </div>
-<!-- <div class="row px-5">
-        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center mt-3 font-weight-bold"
-            onclick="render_chart('graph','ECG','line',' V','Volatage in Volts',val,'ecg')">
-            <a>
-                <i class="fas fa-heartbeat"></i> ECG
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center mt-3 font-weight-bold"
-            onclick="render_chart('graph','TEMPERATURE','line',' F','Temperature in Fahrenheits',val,'temperature')">
-            <a>
-                <i class="fas fa-temperature-high"></i> Temperature
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center mt-3 font-weight-bold"
-            onclick="render_chart('graph','SPO2','spline',' F','Oxygen in Volumes',val,'spo2')">
-            <a>
-                <image src="images/svg/high.svg" width="30 rem" height="30 rem"></image> SPO2
-            </a>SPO2
-        </div>
-        <div class="col-md-3 col-sm-6 shdw-light py-4 text-center mt-3 font-weight-bold"
-            onclick="render_chart_bp('graph','BLOOD PRESSURE','','Pressure in pascals',val,'bp')">
-            <a>
-                <image src="images/bp.jpeg" width="40 rem" height="40 rem"></image> BP
-            </a>BP
-        </div>
-    </div> -->
-
-
-
-
-
 
 <script>
     var val = '<%- JSON.stringify(health) %>';
